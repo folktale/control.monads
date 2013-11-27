@@ -46,14 +46,8 @@ export sequence = (m, ms) --> return ms.reduce-right perform, m.of []
 #
 # Equivalent to `compose(sequence, map(f))`.
 #
-# + type: (Monad m) => m -> (a -> m b) -> [m a] -> m [b]
-export map-m = (m, f, ms) --> return ms.reduce-right perform, m.of []
-                            # where:
-                              function perform(m1, m2) => do
-                                                          x  <- m1.chain
-                                                          xs <- m2.chain
-                                                          xs.push (f x)
-                                                          m.of xs
+# + type: (Monad m) => m -> (a -> m b) -> [a] -> m [b]
+export map-m = (m, f, ms) --> sequence m (ms.map f)
 
 
 # ## Function: compose
