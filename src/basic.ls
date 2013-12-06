@@ -30,7 +30,8 @@
 # results.
 #  
 # + type: (Monad m) => m -> [m a] -> m [a]
-export sequence = (m, ms) --> return ms.reduce-right perform, m.of []
+export sequence = (m, ms) --> do
+                              return ms.reduce-right perform, m.of []
                             # where:
                               function perform(m1, m2) => do
                                                           x  <- m1.chain
@@ -47,7 +48,7 @@ export sequence = (m, ms) --> return ms.reduce-right perform, m.of []
 # Equivalent to `compose(sequence, map(f))`.
 #
 # + type: (Monad m) => m -> (a -> m b) -> [a] -> m [b]
-export map-m = (m, f, ms) --> sequence m (ms.map f)
+export map-m = (m, f, ms) --> sequence m, (ms.map f)
 
 
 # ## Function: compose

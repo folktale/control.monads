@@ -50,12 +50,12 @@ export empty = (a) ->
 export map = (f, a) --> a.map f
 
 
-# ## Function: of
+# ## Function: of_
 #
 # Constructs a new applicative instance.
 #
 # + type: (Applicative f) => a -> f(a)
-export of = (a, f) -->
+export of_ = (a, f) -->
   | f.of => f.of a
   | _    => f@@of a
 
