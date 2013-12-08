@@ -74,3 +74,33 @@ export right-compose = (g, f, a) --> (f a).chain g
 # + type: (Monad m) => m (m a) -> m a
 export join = (m) -> m.chain (a) -> a
 
+
+# ## Function: lift-m
+#
+# Promotes a regular function to a function over monads.
+#  
+# + type: (Monad m) => (a -> b) -> m a -> m b
+export lift-m = (f, m) --> m.map f
+
+
+# ## Function: lift-m2
+#
+# Promotes a regular binary function to a function over monads.
+#  
+# + type: (Monad m) => (a, b -> c) -> m a -> m b -> m c
+export lift-m2 = (f, m1, m2) --> do
+                                 a <- m1.chain
+                                 m2.map (-> f a it)
+
+
+# ## Function: liftMN
+#
+# Promotes a regular function of N arity to a function over monads.
+#  
+# + type: (Monad m) => (a1, a2, ..., aN -> b) -> [m a1, m a2, ..., m aN] -> m b
+export liftMN = (f, ms) -->
+  | xss.length < 0  => throw new Error "Needs at least a singleton list to liftM."
+  | xss.length is 1 => ms.0.map f
+  | xss.length is 2 => lift-m2 f, ms.0, ms.1
+  | otherwise       => (sequence-m ms[*-1], ms).map (-> f ...it)
+                      
