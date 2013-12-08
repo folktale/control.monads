@@ -99,8 +99,8 @@ export lift-m2 = (f, m1, m2) --> do
 #  
 # + type: (Monad m) => (a1, a2, ..., aN -> b) -> [m a1, m a2, ..., m aN] -> m b
 export liftMN = (f, ms) -->
-  | xss.length < 0  => throw new Error "Needs at least a singleton list to liftM."
-  | xss.length is 1 => ms.0.map f
-  | xss.length is 2 => lift-m2 f, ms.0, ms.1
-  | otherwise       => (sequence-m ms[*-1], ms).map (-> f ...it)
+  | ms.length < 0  => throw new Error "Needs at least a singleton list to liftM."
+  | ms.length is 1 => ms.0.map f
+  | ms.length is 2 => lift-m2 f, ms.0, ms.1
+  | otherwise      => (sequence-m ms[*-1], ms).map (-> f ...it)
                       
