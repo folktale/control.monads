@@ -264,14 +264,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 2,
-                    "title": "Function: lift-m",
-                    "slug": "function-lift-m"
-                  },
-                  "depth": 2
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 2,
                     "title": "Function: lift-m2",
                     "slug": "function-lift-m2"
                   },
@@ -329,14 +321,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 "level": 2,
                 "title": "Function: join",
                 "slug": "function-join"
-              },
-              "depth": 2
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 2,
-                "title": "Function: lift-m",
-                "slug": "function-lift-m"
               },
               "depth": 2
             }, {
@@ -548,6 +532,36 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "LiveScript"
                 },
+                "sourcePath": "/home/queen/Projects/folktale/control/monads/test/specs/identity.ls",
+                "projectPath": "test/specs/identity.ls",
+                "targetPath": "test/specs/identity",
+                "pageTitle": "test/specs/identity",
+                "firstHeader": {
+                  "type": "heading",
+                  "data": {
+                    "level": 1,
+                    "title": "The Identity container",
+                    "slug": "the-identity-container",
+                    "isFileHeader": true
+                  },
+                  "depth": 1
+                },
+                "title": "The Identity container"
+              },
+              "depth": 3,
+              "outline": []
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".ls", "Slakefile"],
+                  "pygmentsLexer": "livescript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["#"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "LiveScript"
+                },
                 "sourcePath": "/home/queen/Projects/folktale/control/monads/test/specs/index.ls",
                 "projectPath": "test/specs/index.ls",
                 "targetPath": "test/specs/index",
@@ -578,21 +592,21 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "LiveScript"
                 },
-                "sourcePath": "/home/queen/Projects/folktale/control/monads/test/specs/monad-laws.ls",
-                "projectPath": "test/specs/monad-laws.ls",
-                "targetPath": "test/specs/monad-laws",
-                "pageTitle": "test/specs/monad-laws",
+                "sourcePath": "/home/queen/Projects/folktale/control/monads/test/specs/monads.ls",
+                "projectPath": "test/specs/monads.ls",
+                "targetPath": "test/specs/monads",
+                "pageTitle": "test/specs/monads",
                 "firstHeader": {
                   "type": "heading",
                   "data": {
                     "level": 1,
-                    "title": "Specification for the monadic laws",
-                    "slug": "specification-for-the-monadic-laws",
+                    "title": "Specification for monad operations",
+                    "slug": "specification-for-monad-operations",
                     "isFileHeader": true
                   },
                   "depth": 1
                 },
-                "title": "Specification for the monadic laws"
+                "title": "Specification for monad operations"
               },
               "depth": 3,
               "outline": []

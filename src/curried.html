@@ -25,7 +25,8 @@
 
 <ul>
 <li>type: (Semigroup s) => s(a) -> s(a) -> s(a)</li>
-</ul></div></div><div class="code"><div class="wrapper"><span class="nx">export</span> <span class="nv">concat = </span><span class="nf">(a, b) --&gt;</span> <span class="nx">a</span> <span class="o">++</span> <span class="nx">b</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="function-empty">Function: empty</h2>
+</ul></div></div><div class="code"><div class="wrapper"><span class="nx">export</span> <span class="nv">concat = </span><span class="nf">(a, b) --&gt;</span> 
+  <span class="nx">a</span> <span class="o">++</span> <span class="nx">b</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="function-empty">Function: empty</h2>
 
 <p>Constructs a new empty semigroup.
 + type: (Semigroup s) => s -> s(a)</p></div></div><div class="code"><div class="wrapper"><span class="nx">export</span> <span class="nv">empty = </span><span class="nf">(a) -&gt;</span>
@@ -38,7 +39,9 @@
 <p>Constructs a new applicative instance.
 + type: (Applicative f) => a -> f(a)</p></div></div><div class="code"><div class="wrapper"><span class="nx">export</span> <span class="nv">of_ = </span><span class="nf">(a, f) --&gt;</span>
   <span class="o">|</span> <span class="nx">f</span><span class="p">.</span><span class="nx">of</span> <span class="o">=&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">of</span> <span class="nx">a</span>
-  <span class="o">|</span> <span class="nx">_</span>    <span class="o">=&gt;</span> <span class="nx">f@@</span><span class="k">of</span> <span class="nx">a</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="function-ap">Function: ap</h2>
+  <span class="o">|</span> <span class="nx">_</span>    <span class="o">=&gt;</span> <span class="nx">f@@</span><span class="k">of</span> <span class="nx">a</span>
+
+<span class="nv">module.exports.of = </span><span class="nx">of_</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="function-ap">Function: ap</h2>
 
 <p>Applies the function of an Applicative to the value of another
 Applicative.
