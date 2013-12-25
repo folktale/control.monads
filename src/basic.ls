@@ -75,14 +75,6 @@ export right-compose = (g, f, a) --> (f a).chain g
 export join = (m) -> m.chain (a) -> a
 
 
-# ## Function: lift-m
-#
-# Promotes a regular function to a function over monads.
-#  
-# + type: (Monad m) => (a -> b) -> m a -> m b
-export lift-m = (f, m) --> m.map f
-
-
 # ## Function: lift-m2
 #
 # Promotes a regular binary function to a function over monads.
