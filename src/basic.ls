@@ -31,11 +31,11 @@
 #  
 # + type: (Monad m) => m -> [m a] -> m [a]
 export sequence = (m, ms) --> do
-                              return ms.reduce-right perform, m.of []
+                              return ms.reduce perform, m.of []
                             # where:
-                              function perform(m1, m2) => do
-                                                          x  <- m1.chain
-                                                          xs <- m2.chain
+                              function perform(mr, mx) => do
+                                                          x  <- mx.chain
+                                                          xs <- mr.chain
                                                           xs.push x
                                                           m.of xs
 

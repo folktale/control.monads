@@ -67,3 +67,10 @@ module.exports = spec 'Monadic Ops' (o, spec) ->
      for-all(Any).satisfy (a) ->
        _.chain(-> new Id([it, it]))(new Id(a)).is-equal new Id([a, a])
      .as-test!
+
+  o 'sequence(m, ms) should chain monads in ms and collect results.' do
+     for-all(Int, Int, Int).satisfy (a, b, c) ->
+       _.sequence(SId, [new Id(a), new Id(b), new Id(c)]).is-equal new Id([a,b,c])
+     .as-test!
+
+
