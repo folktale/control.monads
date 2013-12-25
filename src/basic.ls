@@ -102,5 +102,5 @@ export liftMN = (f, ms) -->
   | ms.length < 0  => throw new Error "Needs at least a singleton list to liftM."
   | ms.length is 1 => ms.0.map f
   | ms.length is 2 => lift-m2 f, ms.0, ms.1
-  | otherwise      => (sequence-m ms[*-1], ms).map (-> f ...it)
+  | otherwise      => (sequence ms[*-1], ms).map (-> f ...it)
                       
