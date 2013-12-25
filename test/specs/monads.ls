@@ -33,6 +33,8 @@ _  = require '../../src'
 Any  = sized (-> 10), BigAny
 List = (a) -> sized (-> 10), BigArray(a)
 
+id = (a) -> a
+
 isnt3 = (a, b, c) -> a !== b and b !== c
 
 module.exports = spec 'Monadic Ops' (o, spec) ->
@@ -102,3 +104,12 @@ module.exports = spec 'Monadic Ops' (o, spec) ->
        _.lift-m2((a, b) -> [a, b])(new Id(a))(new Id(b))
         .is-equal new Id([a, b])
      .as-test!
+
+  o 'lift-mN should promote a N-ary function to a fn over monads' do
+     for-all(List(Any)).given (.length > 1) .satisfy (as) ->
+       _.lift-MN((...bs) -> bs.slice!reverse!)(as.map -> new Id(it))
+        .is-equal new Id(as.slice!reverse!)
+     .as-test!
+
+  o 'lift-mN should throw an error for lists of length 0' do
+     throws (-> lift-mn id, [])
