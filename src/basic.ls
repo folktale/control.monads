@@ -82,7 +82,7 @@ export join = (m) -> m.chain (a) -> a
 # + type: (Monad m) => (a, b -> c) -> m a -> m b -> m c
 export lift-m2 = (f, m1, m2) --> do
                                  a <- m1.chain
-                                 m2.map (-> f a it)
+                                 m2.map (-> f a, it)
 
 
 # ## Function: liftMN

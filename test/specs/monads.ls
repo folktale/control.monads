@@ -33,6 +33,8 @@ _  = require '../../src'
 Any  = sized (-> 10), BigAny
 List = (a) -> sized (-> 10), BigArray(a)
 
+isnt3 = (a, b, c) -> a !== b and b !== c
+
 module.exports = spec 'Monadic Ops' (o, spec) ->
 
   o 'concat(a, b) <=> a.concat(b)' do
@@ -69,8 +71,34 @@ module.exports = spec 'Monadic Ops' (o, spec) ->
      .as-test!
 
   o 'sequence(m, ms) should chain monads in ms and collect results.' do
-     for-all(Int, Int, Int).satisfy (a, b, c) ->
+     for-all(Any, Any, Any).satisfy (a, b, c) ->
        _.sequence(SId, [new Id(a), new Id(b), new Id(c)]).is-equal new Id([a,b,c])
      .as-test!
 
+  o 'map-m(m, f) <=> sequence m . map f' do
+     for-all(Any, Any, Any).satisfy (a, b, c) ->
+       _.map-m(SId, SId.of, [a, b, c]).is-equal new Id([a, b, c])
+     .as-test!
 
+  o 'compose(f, g, a) <=> (f a) >>= g' do
+     for-all(Any, Any).given (!==) .satisfy (a, b) ->
+       _.compose(-> new Id([it]))(-> new Id(it ++ [b]))(a)
+        .is-equal new Id([a, b])
+     .as-test!
+
+  o 'compose-right(g, f, a) <=> compose(f, g, a)' do
+     for-all(Any, Any).given (!==) .satisfy (a, b) ->
+       _.right-compose(-> new Id(it ++ [b]))(-> new Id([it]))(a)
+        .is-equal new Id([a, b])
+     .as-test!
+     
+  o 'join should remove one level of a nested monad' do
+     for-all(Any).satisfy (a) ->
+       _.join(new Id(new Id(a))).is-equal new Id(a)
+     .as-test!
+
+  o 'lift-m2 should promote a regular binary function to a fn over monads' do
+     for-all(Any, Any).satisfy (a, b) ->
+       _.lift-m2((a, b) -> [a, b])(new Id(a))(new Id(b))
+        .is-equal new Id([a, b])
+     .as-test!
