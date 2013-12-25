@@ -28,6 +28,8 @@
     "hifive-tap": "~0.1.0",
     "hifive": "~0.1.0",
     "uglify-js": "~2.4.3",
-    "laws": "~0.2.0"
+    "laws": "~0.2.0",
+    "deep-equal": "~0.1.2",
+    "claire": "~0.4.1"
   }
 }

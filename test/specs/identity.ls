@@ -1,7 +1,7 @@
-# # Curried versions of monadic methods
+# # The Identity container
 
 /** ^
- * Copyright (c) 2013 Quildreen Motta
+ * Copyright (c) 2013 Quildreen "Sorella" Motta <quildreen@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -23,57 +23,45 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+# This module provides a minimal, fully conforming, implementation of
+# the Identity container. It serves both as an example, and as a way to
+# test if the equations in the laws actually do what they're supposed
+# to.
 
-# ## Function: concat
-#
-# Concatenates two semigroups.
-#  
-# + type: (Semigroup s) => s(a) -> s(a) -> s(a)
-export concat = (a, b) --> 
-  a ++ b
+export class StaticIdentity
+  (a) ->
+    @value    = a
+    @is-empty = false
 
+  # Semigroup
+  concat: (b) ->
+    | @is-empty  => b
+    | b.is-empty => this
+    | otherwise  => new Identity (@value ++ b.value)
 
-# ## Function: empty
-#
-# Constructs a new empty semigroup.
-#
-# + type: (Semigroup s) => s -> s(a)
-export empty = (a) ->
-  | a.empty   => a.empty!
-  | otherwise => a@@empty!
+  # Monoid
+  @empty = -> new Identity <<< { is-empty: true }
 
+  # Functor
+  map: (f) -> new Identity (f @value)
 
-# ## Function: map
-#
-# Maps over a Functor instance.
-#
-# + type: (Functor f) => (a -> b) -> f(a) -> f(b)
-export map = (f, a) --> a.map f
+  # Applicative / Monad
+  ap: (b) -> new Identity (@value b.value)
 
+  @of = (a) -> new Identity a
 
-# ## Function: of_
-#
-# Constructs a new applicative instance.
-#
-# + type: (Applicative f) => a -> f(a)
-export of_ = (a, f) -->
-  | f.of => f.of a
-  | _    => f@@of a
+  # Chain / Monad
+  chain: (f) -> f @value
 
-module.exports.of = of_
+  # Eq
+  is-equal: (a) ->
+    | @is-empty => a.is-empty
+    | otherwise => !a.is-empty and (@value === a.value)
+  
 
-# ## Function: ap
-#
-# Applies the function of an Applicative to the value of another
-# Applicative.
-#
-# + type: (Applicative f) => f(a -> b) -> f(a) -> f(b)
-export ap = (a, b) --> a.ap b
+export class Identity extends StaticIdentity
+  of: StaticIdentity.of
+  empty: StaticIdentity.empty
 
-
-# ## Function: chain
-#
-# Extracts the value of a monad.
-#  
-# + type: (Chain c) => (a -> c(b)) -> c(a) -> c(b)
-export chain = (f, a) --> a.chain f
+delete Identity.of
+delete Identity.empty

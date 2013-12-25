@@ -23,6 +23,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  curried: require './curried'
-  basic: require './basic'
+module.exports = [
+  require './curried'
+  require './basic'
+].reduce (<<<), {}
