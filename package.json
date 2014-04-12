@@ -1,6 +1,6 @@
 {
   "name": "control.monads",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Common monad combinators and sequencing operations.",
   "main": "lib/index.js",
   "scripts": {
