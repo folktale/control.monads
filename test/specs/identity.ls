@@ -23,6 +23,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+deep-eq = require 'deep-equal'
+
 # This module provides a minimal, fully conforming, implementation of
 # the Identity container. It serves both as an example, and as a way to
 # test if the equations in the laws actually do what they're supposed
@@ -56,7 +58,7 @@ export class StaticIdentity
   # Eq
   is-equal: (a) ->
     | @is-empty => a.is-empty
-    | otherwise => !a.is-empty and (@value === a.value)
+    | otherwise => !a.is-empty and (@value `deep-eq` a.value)
   
 
 export class Identity extends StaticIdentity

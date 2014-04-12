@@ -27,7 +27,7 @@ spec = (require 'hifive')!
 {for-all, data: {Any:BigAny, Array:BigArray, Int}, sized} = require 'claire'
 {ok, throws} = require 'assert'
 
-_  = require '../../src'
+_  = require '../../lib'
 {StaticIdentity:SId, Identity:Id} = require './identity'
 
 Any  = sized (-> 10), BigAny
