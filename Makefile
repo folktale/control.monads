@@ -27,7 +27,7 @@ clean-docs:
 	perl -pi -e "s?$$ABSPATH/??g" ./docs/*.html
 
 clean:
-	rm -rf dist build lib
+	rm -rf dist build
 
 test:
 	$(lsc) test/tap.ls
