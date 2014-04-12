@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Control.Monads Module: lib/basic</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Control.Monads</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="basic.html">lib/basic</a>
+						</li>
+						
+						<li>
+							<a href="curried.html">lib/curried</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	<h1 class="page-title">Module: lib/basic</h1>
+<section>
+
+<header>
+    <h2>
+    lib/basic
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+            <div class="description"><p>Basic monad operations.</p></div>
+        
+
+        
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="compose"><span class="type-signature">&lt;static> </span>compose<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => (α → m[β]) → (β → m[γ]) → α → m[γ]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Left-to-right Kleisi composition of monads.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="join"><span class="type-signature">&lt;static> </span>join<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => m[m[α]] → m[α]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Removes one level of nesting for a nested monad.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-104">line 104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="liftM2"><span class="type-signature">&lt;static> </span>liftM2<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => (α, β → γ) → m[α] → m[β] → m[γ]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Promotes a regular binary function to a function over monads.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="liftMN"><span class="type-signature">&lt;static> </span>liftMN<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => (α₁, α₂, ..., αₙ → β) → Array[m[α₁], m[α₂], ..., m[αₙ]] → m[β]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Promotes a regular function of arity N to a function over monads.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-130">line 130</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="mapM"><span class="type-signature">&lt;static> </span>mapM<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => m → (α → m[β]) → Array[α] → m[Array[β]]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Evaluates each action in sequence, left to right, collecting the results
+mapped by the given function.</p>
+<p>Equivalent to <code>compose(sequence, map(f))</code>.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="rightCompose"><span class="type-signature">&lt;static> </span>rightCompose<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => (β → m[γ]) → (α → m[β]) → α → m[γ]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Right-to-left Kleisi composition of monads.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-95">line 95</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sequence"><span class="type-signature">&lt;static> </span>sequence<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">m:Monad[_] => m → Array[m[α]] → m[Array[α]]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Evaluates each action in sequence, left to right, collecting the results.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="basic.js.html">basic.js</a>, <a href="basic.js.html#sunlight-1-line-50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		© 2014 Quildreen Motta
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
+		on Sat Apr 12 2014 16:07:50 GMT-0300 (BRT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>
