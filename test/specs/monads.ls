@@ -28,6 +28,7 @@ spec = (require 'hifive')!
 {ok, throws} = require 'assert'
 
 _  = require '../../lib'
+deep-eq = require 'deep-equal'
 {StaticIdentity:SId, Identity:Id} = require './identity'
 
 Any  = sized (-> 10), BigAny
@@ -75,6 +76,14 @@ module.exports = spec 'Monadic Ops' (o, spec) ->
   o 'sequence(m, ms) should chain monads in ms and collect results.' do
      for-all(Any, Any, Any).satisfy (a, b, c) ->
        _.sequence(SId, [new Id(a), new Id(b), new Id(c)]).is-equal new Id([a,b,c])
+     .as-test!
+
+  o 'sequence(m, ms) should run actions in sequence.' do
+     for-all(Int, Int, Int).satisfy (a, b, c) ->
+       xs = []
+       f  = (x) -> { chain: (f) -> xs.push(x); return f(x) }
+       (_.sequence(SId, [f a; f b; f c]).isEqual new Id([a, b, c])) \
+       && (xs `deep-eq` [a, b, c])
      .as-test!
 
   o 'map-m(m, f) <=> sequence m . map f' do
