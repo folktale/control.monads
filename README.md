@@ -104,5 +104,5 @@ Released under the [MIT licence](https://github.com/folktale/control.monads/blob
 [es5-shim]: https://github.com/kriskowal/es5-shim
 [docs]: http://folktale.github.io/control.monads
 <!-- [release: https://github.com/folktale/control.monads/releases/download/v$VERSION/control.monads-$VERSION.tar.gz] -->
-[release]: https://github.com/folktale/control.monads/releases/download/v0.5.1/control.monads-0.5.1.tar.gz
+[release]: https://github.com/folktale/control.monads/releases/download/v0.6.0/control.monads-0.6.0.tar.gz
 <!-- [/release] -->
