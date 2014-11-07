@@ -24,7 +24,7 @@
  */
 
 spec = (require 'hifive')!
-{for-all, data: {Any:BigAny, Array:BigArray, Int}, sized} = require 'claire'
+{for-all, data: {Any:BigAny, Array:BigArray, Bool, Int}, sized} = require 'claire'
 {ok, throws} = require 'assert'
 
 _  = require '../../lib'
@@ -107,6 +107,16 @@ module.exports = spec 'Monadic Ops' (o, spec) ->
      for-all(Any).satisfy (a) ->
        _.join(new Id(new Id(a))).is-equal new Id(a)
      .as-test!
+
+  o 'filterM of an empty array should yield m []' do
+    for-all(Bool).satisfy (a) ->
+      _.filterM(SId, (-> new Id(a)), []).is-equal new Id([])
+    .as-test!
+
+  o 'filterM of an array xs for p should only keep items for which p returns m True' do
+    for-all(Bool, List(Any)).satisfy (a, xs) ->
+      _.filterM(SId, (-> new Id(a)), xs).is-equal new Id(xs.filter (-> a))
+    .as-test!
 
   o 'lift-m2 should promote a regular binary function to a fn over monads' do
      for-all(Any, Any).satisfy (a, b) ->
